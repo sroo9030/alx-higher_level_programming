@@ -11,13 +11,15 @@ def matrix_divided(matrix, div):
         dev(int of float): a number
 
     Raise:
-        TypeError: the list of lists of integers or floats or
-                   the row of the matrix not the same size or
-                   the div is not a number
-        ZeroDivisionError: div equal 0
+        TypeError: If the matrix is not a list of lists or
+                   if the divisor is not an int or float.
+        ZeroDivisionError: If the divisor is 0.
+        TypeError: If any element of the matrix is not an int or float.
+        TypeError: If any row of the matrix is not of the same size.
 
     Return:
-        a new matrix
+        list of lists: A new matrix with elements divided by
+        the divisor and rounded to 2 decimal places.
     """
     if type(div) not in (int, float):
         TypeError("div must be a number")
@@ -32,8 +34,7 @@ def matrix_divided(matrix, div):
         TypeError("Each row of the matrix must have the same size")
 
     if not all(isinstance(num, (int, float)) for row in matrix for num in row):
-        TypeError("matrix must be a matrix (list of lists)\
-                       of integers/floats")
+        TypeError("matrix must be a matrix (list of lists) of integers/floats")
 
     result = []
     for row in matrix:
