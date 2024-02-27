@@ -22,19 +22,21 @@ def matrix_divided(matrix, div):
         the divisor and rounded to 2 decimal places.
     """
     if type(div) not in (int, float):
-        TypeError("div must be a number")
+        raise TypeError("div must be a number")
 
     if div == 0:
-        ZeroDivisionError("division by zero")
+        raise ZeroDivisionError("division by zero")
 
     if not all(isinstance(row, list) for row in matrix):
-        TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError("matrix must be a matrix (list of lists)\
+                         of integers/floats")
 
     if any(len(row) != len(matrix[0]) for row in matrix):
-        TypeError("Each row of the matrix must have the same size")
+        raise TypeError("Each row of the matrix must have the same size")
 
     if not all(isinstance(num, (int, float)) for row in matrix for num in row):
-        TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError("matrix must be a matrix (list of lists)\
+                         of integers/floats")
 
     result = []
     for row in matrix:
