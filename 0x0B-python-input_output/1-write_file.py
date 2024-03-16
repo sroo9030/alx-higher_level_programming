@@ -13,12 +13,5 @@ def write_file(filename="", text=""):
     Return:
         the number of characters written
     '''
-    count = 0
     with open(filename,  mode='w', encoding='utf-8') as f:
-        if text:
-            for i in text:
-                if i == " " or i == "\n":
-                    count += 1
-            count += len(text)
-        f.write(text)
-    return count
+        return f.write(text)
