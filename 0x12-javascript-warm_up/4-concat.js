@@ -3,10 +3,7 @@
 const process = require('process');
 const args = process.argv;
 
-if (args[3]) {
-  console.log(args[2] + ' is ' + args[3]);
-} else if (args[2]) {
-  console.log(args[2] + ' is undefined');
-} else {
-  console.log('undefined is undefined');
-}
+const arg1 = args[2] || 'undefined';
+const arg2 = args[3] || 'undefined';
+
+console.log(`${arg1} is ${arg2}`);
