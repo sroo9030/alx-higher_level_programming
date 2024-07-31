@@ -12,6 +12,4 @@ if (filePath && stringToWrite) {
       console.log(err);
     }
   });
-} else {
-  console.log('Missing file path or string to write');
-}
+} 
