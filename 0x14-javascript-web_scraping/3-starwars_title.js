@@ -2,21 +2,22 @@
 
 const request = require('request');
 const process = require('process');
+const args = process.argv;
 
-const movieId = process.argv[2];
+if (args.length < 3) {
+  console.log('Please provide a movie ID');
+  process.exit(1);
+}
+
+const movieId = args[2];
 const url = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
 
-if (movieId) {
-  request.get(url, (error, response, body) => {
-    if (error) {
-      console.log(error);
-    } else if (response.statusCode === 200) {
-      const film = JSON.parse(body);
-      console.log(film.title);
-    } else {
-      console.log(`Error: ${response.statusCode}`);
-    }
-  });
-} else {
-  console.log('Missing movie ID');
-}
+request(url, { json: true }, (err, res, body) => {
+  if (err) {
+    console.error('Error:', err);
+  } else if (res.statusCode === 200) {
+    console.log(body.title);
+  } else {
+    console.log('Movie not found');
+  }
+});
